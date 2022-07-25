@@ -4,7 +4,7 @@ import { CommandsExplorer } from '@teambit/community.ui.bit-cli.commands-explore
 import styles from './styles.module.scss';
 
 export const ImportExample = () => {
-  const example = { 'component-ids...': 'teambit.design/info/icon-text' };
+  const example = { 'component-patterns...': 'teambit.design/info/icon-text' };
   return <CommandsExplorer commandName="import" commandExample={example} />;
 };
 

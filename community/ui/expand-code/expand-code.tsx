@@ -7,6 +7,7 @@ export type ExpandCodeProps = {
   snippet: any;
   className?: string;
   codeType?: 'command' | 'snippet';
+  customTitle?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const title = {
@@ -14,13 +15,13 @@ const title = {
   snippet: 'See full code snippet',
 };
 
-export const ExpandCode = ({ snippet, className, codeType = 'command', ...rest }: ExpandCodeProps) => {
+export const ExpandCode = ({ snippet, className, customTitle, codeType = 'command', ...rest }: ExpandCodeProps) => {
   const Snippet = snippet;
   return (
     <div className={cx(styles.collapsibleWrapper, className)} {...rest}>
       <CollapsibleContent
         // @ts-ignore
-        title={<span>{title[codeType]}</span>}
+        title={<span>{customTitle ?? title[codeType]}</span>}
         hoverEffect="text"
         content={<Snippet />}
         hasSeperator={false}

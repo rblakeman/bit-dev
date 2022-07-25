@@ -108,8 +108,8 @@ export const gettingStartedDocsRoutes: DocsRoute[] = [
         component: <DevEnvs />,
       },
       {
-        path: 'use-apps',
-        title: 'Use apps',
+        path: 'create-apps',
+        title: 'Create apps',
         description: '',
         component: <UseApps />,
       },

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import { Terminal } from '@teambit/community.ui.bit-cli.terminal';
 import { CommandsExplorer } from '@teambit/community.ui.bit-cli.commands-explorer';
@@ -191,6 +192,25 @@ export const CheckoutComponentHeadsExample = () => {
 export const CheckoutPatternVersionExample = () => {
   const example = {
     'values...': '0.0.1 "my-org.tasks-scope/*"',
+  };
+
+  return <CommandsExplorer commandName="checkout" commandExample={example} />;
+};
+
+export const MergeConflictOutput = () => (
+  <Terminal isOutput>
+    <span className={styles.redHighlight}>automatic merge has failed for component info/text-icon</span>
+    <br />
+    <span className={styles.redHighlight}>
+      {`please use "--manual" to manually merge changes or use "--theirs / --ours" to choose one of the conflicted versions`}
+    </span>
+  </Terminal>
+);
+
+export const CheckoutHeadWithConflicts = () => {
+  const example = {
+    'values...': 'head info/text-icon',
+    ours: true,
   };
 
   return <CommandsExplorer commandName="checkout" commandExample={example} />;

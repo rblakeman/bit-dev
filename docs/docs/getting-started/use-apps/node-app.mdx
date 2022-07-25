@@ -1,22 +1,68 @@
-import { ImportNodeApp, UseNodeApp, RunNodeApp, RunNodeAppOutput } from './commands';
+import {
+  CreateNodeApp,
+  CreateNodeAppOutput,
+  UseNodeApp,
+  RunNodeApp,
+  RunNodeAppOutput,
+  ForkNodeApp,
+  UseForkedNodeApp,
+  RunForkedNodeApp,
+} from './commands';
+import { InstallExpress } from './tooltips';
+import { ExpandNodeAppDir } from './explore-my-node-app';
 
-Run the following to import this demo Node app to your workspace:
+### Create a new app component
 
-<ImportNodeApp />
+Run the following to create a Node (express) app using a template:
 
-Run the following to make this app loadable by your workspace:
+<CreateNodeApp />
+
+The output displays the component ID of the generated app:
+
+<CreateNodeAppOutput />
+
+<ExpandNodeAppDir />
+
+The generated app component includes an [app plugin file](/apps/application-plugins) with a unique extension that is detected
+by its corresponding [application-type](https://bit.dev/docs/apps/application-types) (see the `my-react-app.node-app.ts`
+file, in your app's directory). Use the app plugin file to determine how it should be served, built and deployed.
+
+Run the following using the app's component ID to make this app loadable by your workspace:
 
 <UseNodeApp />
 
-The app's name (as configured in its files) is `hello-node-app`. Run the following to run this app locally:
+The app's name, as configured in its plugin file, is `my-express-app`. Run the following to run this app locally (make sure to <InstallExpress>install 'express'</InstallExpress> first, as it is a dependency of this app):
 
 <RunNodeApp />
 
-The output displays the port used for serving that app (head over to [http://localhost:3333](http://localhost:3333) to try it):
+The output displays the port used for serving that app:
 
 <RunNodeAppOutput />
 
-:::info Deploying an app
+:::info Deploying apps
 Node apps do not provide their own default deployer. To learn how to set a deployer see [App deployment](https://bit.dev/docs/apps/app-deployment).
 To explore a demo Node app with a deployer, see this [Cloudflare worker](https://bit.cloud/teambit/cloud-providers/aspects/cloudflare-worker) or this [AWS Lambda](https://bit.cloud/learnbit/apps/aws/lambda/hello-world-lambda).
+:::
+
+### Fork an app to your workspace
+
+Search [bit.cloud](https://bit.cloud) for an app component that best fits your needs, and fork it to your workspace. This will provide you with a new component that has much of its boilerplate written for you.
+
+For example, run the following to fork the [apps/greetings](https://bit.cloud/my-org/people/apps/greetings) Node app to your workspace:
+
+<ForkNodeApp />
+
+Run the following to make this app loadable by the workspace:
+
+<UseForkedNodeApp />
+
+Run the following to run the app:
+
+<RunForkedNodeApp />
+
+:::info Define an existing component as an app
+To define an existing component as an app, add to its directory the necessary app plugin and entry file (use a plugin file the corresponds to the application-type you choose).
+
+For example, the [previously created component](/getting-started/composing/creating-components?component_type=1), [`apps/greetings`](https://bit.cloud/my-org/people/apps/greetings), requires [this plugin file](https://bit.cloud/my-org/people/apps/greetings/~code/greetings.app-root.ts) to be included in its component directory, for it to be defined as a react app.
+Once these files are added, run the `bit use <app-component-id>` command, to make it loadable by your workspace.
 :::

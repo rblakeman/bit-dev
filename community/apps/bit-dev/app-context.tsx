@@ -12,8 +12,8 @@ export function AppContext({ children }: { children?: ReactNode }) {
     // UserAgentProvider doesn't accept undefined type (even though it handles undefined just fine)
     // https://stackoverflow.com/questions/71548903/react-context-provider-not-allowing-undefined
     <>
-      <GoogleAnalytics trackingId="UA-89811062-3" />
-      <GoogleTagManager gtmIds={['GTM-WQX39XS']} />
+      <GoogleAnalytics trackingId="UA-89811062-1" />
+      <GoogleTagManager gtmIds={['GTM-M99BCWV']} />
       <NavigationProvider implementation={reactRouterAdapter}>
         <CloudProvider>
           <ThemeSwitcher defaultTheme="light">

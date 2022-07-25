@@ -1,20 +1,35 @@
 import React from 'react';
 import { CommandsExplorer } from '@teambit/community.ui.bit-cli.commands-explorer';
 import { Terminal } from '@teambit/community.ui.bit-cli.terminal';
+import styles from './styles.module.scss';
 
-const REACT_APP_ID = 'learnbit.apps/react/basic-app';
-const REACT_APP_NAME = 'basic-app';
-const NODE_APP_ID = 'learnbit.apps/node-app';
-const NODE_APP_NAME = 'hello-node-app';
+const REACT_APP_ID = 'my-org.my-scope/apps/my-react-app';
+const REACT_APP_NAME = 'apps/my-react-app';
+const NODE_APP_ID = 'my-org.my-scope/apps/my-express-app';
+const NODE_APP_NAME = 'my-express-app';
 
 /* react app commands */
 
-export const ImportReactApp = () => {
+export const CreateReactApp = () => {
   const example = {
-    'component-ids...': REACT_APP_ID,
+    'component-names...': REACT_APP_NAME,
+    'template-name': 'react-app',
   };
-  return <CommandsExplorer commandName="import" commandExample={example} />;
+  return <CommandsExplorer commandName="create" commandExample={example} />;
 };
+
+export const CreateReactAppOutput = () => (
+  <Terminal isOutput>
+    <span className={styles.greenHighlight}>1 component(s) were created</span>
+    <br />
+    <br />
+    <span className={styles.bold}>{REACT_APP_ID}</span>
+    <br />
+    <span>{`    location: my-scope/apps/my-react-app`}</span>
+    <br />
+    <span>{`    env:      teambit.harmony/aspect (set by template)`}</span>
+  </Terminal>
+);
 
 export const UseReactApp = () => {
   const example = {
@@ -36,12 +51,26 @@ export const RunReactAppOutput = () => (
 
 /* node app commands */
 
-export const ImportNodeApp = () => {
+export const CreateNodeApp = () => {
   const example = {
-    'component-ids...': NODE_APP_ID,
+    'component-names...': NODE_APP_NAME,
+    'template-name': 'express-app',
   };
-  return <CommandsExplorer commandName="import" commandExample={example} />;
+  return <CommandsExplorer commandName="create" commandExample={example} />;
 };
+
+export const CreateNodeAppOutput = () => (
+  <Terminal isOutput>
+    <span className={styles.greenHighlight}>1 component(s) were created</span>
+    <br />
+    <br />
+    <span className={styles.bold}>{NODE_APP_ID}</span>
+    <br />
+    <span>{`    location: my-scope/apps/my-express-app`}</span>
+    <br />
+    <span>{`    env:      teambit.harmony/aspect (set by template)`}</span>
+  </Terminal>
+);
 
 export const UseNodeApp = () => {
   const example = {
@@ -58,7 +87,47 @@ export const RunNodeApp = () => {
 };
 
 export const RunNodeAppOutput = () => (
-  <Terminal isOutput>{`Example app listening on port 3333
-
-${NODE_APP_NAME} app is running`}</Terminal>
+  <Terminal isOutput>my-express-app app is running on http://localhost:3003</Terminal>
 );
+
+export const ForkReactApp = () => {
+  const example = {
+    'source-component-id': 'my-org.tasks-scope/apps/to-do',
+  };
+  return <CommandsExplorer commandName="fork" commandExample={example} />;
+};
+
+export const ForkNodeApp = () => {
+  const example = {
+    'source-component-id': 'my-org.people/apps/greetings',
+  };
+  return <CommandsExplorer commandName="fork" commandExample={example} />;
+};
+
+export const UseForkedReactApp = () => {
+  const example = {
+    'component-id': 'my-org.tasks-scope/apps/to-do',
+  };
+  return <CommandsExplorer commandName="use" commandExample={example} />;
+};
+
+export const UseForkedNodeApp = () => {
+  const example = {
+    'component-id': 'my-org.people/apps/greetings',
+  };
+  return <CommandsExplorer commandName="use" commandExample={example} />;
+};
+
+export const RunForkedReactApp = () => {
+  const example = {
+    'app-name': 'todo-app',
+  };
+  return <CommandsExplorer commandName="run" commandExample={example} />;
+};
+
+export const RunForkedNodeApp = () => {
+  const example = {
+    'app-name': 'greetings-app',
+  };
+  return <CommandsExplorer commandName="run" commandExample={example} />;
+};

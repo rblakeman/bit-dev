@@ -21,7 +21,7 @@ export const ExploreComponentFiles = () => (
       fileTreeWidth: 230,
       codeHeight: 400,
       isDirOpen: true,
-      title: 'tasks-scope/ui/todo',
+      title: 'tasks-scope/apps/to-do',
       wordWrap: 'off',
     }}
     files={files}

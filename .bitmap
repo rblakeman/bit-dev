@@ -17,7 +17,7 @@
     },
     "apps/wiki": {
         "scope": "teambit.wiki",
-        "version": "1.91.5",
+        "version": "1.91.6",
         "mainFile": "index.ts",
         "rootDir": "wiki/apps/wiki"
     },
@@ -185,7 +185,7 @@
     },
     "content/collapsible-content": {
         "scope": "teambit.design",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "mainFile": "index.ts",
         "rootDir": "design/content/collapsible-content"
     },
@@ -1546,7 +1546,7 @@
     },
     "ui/community-highlighter": {
         "scope": "teambit.community",
-        "version": "1.96.4",
+        "version": "1.96.5",
         "mainFile": "index.ts",
         "rootDir": "community/ui/community-highlighter"
     },
@@ -1744,7 +1744,7 @@
     },
     "ui/hooks/use-local-storage": {
         "scope": "teambit.community",
-        "version": "1.96.4",
+        "version": "1.96.5",
         "mainFile": "index.ts",
         "rootDir": "community/ui/hooks/use-local-storage"
     },

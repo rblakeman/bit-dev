@@ -7,6 +7,8 @@ import {
   DiffOutput,
   CheckoutHeadExample,
   CheckoutOutput,
+  MergeConflictOutput,
+  CheckoutHeadWithConflicts,
 } from './commands';
 import { ExpandedDiff, ExpandedCheckout } from './expand-command-options';
 import compare from './compare-ws.png';
@@ -62,36 +64,16 @@ The output lists the component files that were updated by this checkout:
 
 ### Handling merge conflicts
 
-In case Git is unable to automatically merge the incoming changes with local changes in your component, you get prompted to resolve the conflict.
+In cases where auto-merge is impossible, you wil be prompted with the following message:
 
-Bit will print a similar output to this:
+<MergeConflictOutput />
 
-```bash
-successfully switched teambit.design/info/icon-text 0.0.8
-updated icon-text.composition.tsx
-updated icon-text.module.scss
-CONFLICT icon-text.tsx automatic merge failed. please fix conflicts manually and then tag the results.
-```
+To resolve these conflicts, run the checkout command again with one of these options:
 
-You can use the several options when `checkout` to resolve conflicts.
+- `--theirs` - accept incoming changes
+- `--ours` - keep local changes
+- `--manual` - resolve conflicts, manually
 
-- `--theirs` - the remote version overrides the local modifications.
-- `--ours` - the local implementation overrides the remote changes.
-- `--manual` - resolve the conflict manually.
+For example:
 
-```bash
-bit checkout latest teambit.base-ui/button --ours
-```
-
-Once merge is resolved, run `bit status` and see the result.
-
-```bash
-bit status
-```
-
-```status
-modified components
-(use "bit tag --all [version]" to lock a version with all your changes)
-
-     > teambit.design/info/icon-text ... ok
-```
+<CheckoutHeadWithConflicts />
