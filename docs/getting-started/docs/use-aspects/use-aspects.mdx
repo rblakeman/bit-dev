@@ -1,0 +1,52 @@
+import { Image } from '@teambit/docs.ui.zoomable-image';
+import uiScreenshot from './ui_screenshot.png';
+import { UseCustomAspectInWs, UseCustomAspectInWsOutput, BitAspect } from './commands';
+
+# Use Aspects
+
+Aspects are the building blocks of Bit. An aspect is a type of component that implement a complete feature (backend and frontend), and provides services to other aspects.
+Your components, workspaces and scopes use a set of aspects that are loaded by default. Each of them is responsible for a specific feature.
+Add a new feature by extending this group of "core aspects" with a custom aspect.
+
+## Extend your workspace
+
+Add an aspect to your workspace to extend it with new features that add Bit commands, UI tabs, and so on.
+
+For example, run the following to use a custom aspect that extracts the 'todo' comments of components in that workspace:
+
+<UseCustomAspectInWs />
+
+The output notifies the aspect was added to your workspace config:
+
+<UseCustomAspectInWsOutput />
+
+Now that this aspect is added to your workspace, components in that workspace will have their 'todos' as their metadata, in addition to metadata regarding their envs, their package name, and so on.
+
+To try the custom 'todos' feature, run the newly-added `bit todos COMPONENT_NAME` command in your terminal or head over to the workspace UI (`bit start`),
+to explore the newly-added 'To-dos' tab.
+
+<Image src={uiScreenshot} maxWidth={450} hasBackground />
+
+<br />
+
+> The new 'todos' metadata will be stored in the components' (next) snaps. This will make that data available wherever these components are hosted, whether it is in their remote scopes or other workspaces.
+> However, since this custom aspect is set on the workspace and not on the components (directly), it will not load in workspaces that do not have it in their workspace config.
+
+## Extend your components
+
+An aspect can be configured (directly) on a component. When that happens, an aspect becomes part of the component's development environment.
+An env is an example of such an aspect. However, unlike other aspects, the env's job is to standardize and simplify development by serving as a hub for other aspects (for example, linter, compiler, docs, and so on).
+
+To maintain this sort of consistency in development (of components of the same type), it is recommended to [configure aspects on components via their envs](/envs/composing-env).
+
+To configure an aspect directly on a component, or a group of components, run the following:
+
+<BitAspect />
+
+For example, the following adds the custom 'lines-of-code (LOC)' aspect to every component that belongs to the 'my-org.tasks-scope' scope:
+
+This aspect is responsible for generating a new artifact, a JSON file that contains the components' lines-of-code statistics. Every component that has this aspect configured on it, will generate this artifact, wherever this component is maintained.
+
+## Extend your scopes
+
+Scopes can be extended when self-hosted, using the `scope.jsonc` file. This features will soon be available for scopes hosted on bit.cloud, as well.

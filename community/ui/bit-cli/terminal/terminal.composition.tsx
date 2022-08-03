@@ -1,5 +1,6 @@
 import React from 'react';
 import { Terminal } from './terminal';
+import { Neutral, Heading, Blue, Red, Green } from './terminal-elements';
 
 const outputContent = `  Resolving component dependencies for workspace: 'react-grap'
 ✔ import 5 components with their dependencies (if missing)
@@ -26,3 +27,19 @@ export const CustomHighlighting = () => {
     </Terminal>
   );
 };
+
+export const TerminalElements = () => (
+  <Terminal isOutput>
+    <Neutral>teambit.design/ui/buttons/button</Neutral>
+    <br />
+    <Neutral bold>teambit.design/ui/buttons/button</Neutral>
+    <br />
+    <Blue>teambit.design/ui/buttons/button</Blue>
+    <br />
+    <Red>teambit.design/ui/buttons/button</Red>
+    <br />
+    <Green>teambit.design/ui/buttons/button</Green>
+    <br />
+    <Heading>modified components</Heading>
+  </Terminal>
+);

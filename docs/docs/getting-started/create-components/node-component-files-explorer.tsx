@@ -9,8 +9,8 @@ import { index } from './node-demo-component-files/index';
 const files = {
   'greetings.composition.tsx': composition,
   'greetings.docs.mdx': docs,
-  'greetings.spec.tsx': spec,
-  'greetings.tsx': greetings,
+  'greetings.spec.ts': spec,
+  'greetings.ts': greetings,
   'index.ts': index,
 };
 

@@ -1225,6 +1225,19 @@
         "mainFile": "index.ts",
         "rootDir": "docs/docs/getting-started/use-apps"
     },
+    "docs/getting-started/use-aspects": {
+        "scope": "",
+        "version": "",
+        "defaultScope": "teambit.docs",
+        "mainFile": "index.ts",
+        "rootDir": "docs/getting-started/docs/use-aspects",
+        "config": {
+            "teambit.envs/envs": {
+                "env": "teambit.community/envs/community-mdx"
+            },
+            "teambit.community/envs/community-mdx": {}
+        }
+    },
     "docs/installation/setup-editor": {
         "scope": "teambit.bit",
         "version": "1.96.3",
@@ -1357,6 +1370,19 @@
         "version": "1.96.5",
         "mainFile": "index.ts",
         "rootDir": "base-react/layout/panel"
+    },
+    "loaders/docs-skeleton": {
+        "scope": "",
+        "version": "",
+        "defaultScope": "teambit.community",
+        "mainFile": "index.ts",
+        "rootDir": "community/loaders/docs-skeleton",
+        "config": {
+            "teambit.envs/envs": {
+                "env": "teambit.community/envs/community-react"
+            },
+            "teambit.community/envs/community-react": {}
+        }
     },
     "modules/paths": {
         "scope": "teambit.docs",
