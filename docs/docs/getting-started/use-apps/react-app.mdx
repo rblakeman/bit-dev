@@ -1,14 +1,37 @@
-import { ImportReactApp, UseReactApp, RunReactApp, RunReactAppOutput } from './commands';
+import {
+  CreateReactApp,
+  CreateReactAppOutput,
+  UseReactApp,
+  RunReactApp,
+  RunReactAppOutput,
+  ForkReactApp,
+  UseForkedReactApp,
+  RunForkedReactApp,
+} from './commands';
+import { ExpandReactAppDir } from './explore-my-react-app';
+import { InstallReactRouterDom } from './tooltips';
 
-Run the following to import this demo React app to your workspace:
+### Create a new app component
 
-<ImportReactApp />
+Run the following to create a React app using a [component template](/dev-services/generator/generator-overview):
 
-Run the following to make this app loadable by your workspace:
+<CreateReactApp />
+
+The output displays the ID of the generated app (component):
+
+<CreateReactAppOutput />
+
+<ExpandReactAppDir />
+
+The generated app component includes an [app plugin file](/apps/application-plugins) with a unique extension that is detected
+by its corresponding [application-type](https://bit.dev/docs/apps/application-types) (see the `my-express-app.node-app.ts` file, in your app's directory). Use the app plugin
+file to determine how it should be served, built and deployed.
+
+Run the following using the app's component ID to make this app loadable by your workspace:
 
 <UseReactApp />
 
-The app's name (as configured in its files) is `basic-app`. Run the following to run this app locally:
+The app's name, as configured in its plugin file, is `my-react-app`. Run the following to run this app locally (make sure to <InstallReactRouterDom>install 'react-router-dom'</InstallReactRouterDom> first, as it is a dependency of this app):
 
 <RunReactApp />
 
@@ -16,7 +39,30 @@ The output displays the port used for serving that app:
 
 <RunReactAppOutput />
 
-:::info Deploying an app
+:::info Deploying apps
 React apps do not provide their own default deployer. To learn how to set a deployer see [App deployment](https://bit.dev/docs/apps/app-deployment).
 To explore a demo React app configured with a deployer, see this [React app with Netlify deployer](https://bit.cloud/learnbit/apps/netlify/react-app) or this [React app with Cloudflare deployer](https://bit.cloud/learnbit/apps/cloudflare/react-app).
+:::
+
+### Fork an app to your workspace
+
+Search [bit.cloud](https://bit.cloud) for an app component that best fits your needs, and [fork](/components/forking-components) it to your workspace. This will provide you with a new component that has much of its boilerplate written for you.
+
+For example, run the following to fork the [apps/to-do](https://bit.cloud/my-org/tasks-scope/apps/to-do) React app to your workspace:
+
+<ForkReactApp />
+
+Run the following to make this app loadable by the workspace:
+
+<UseForkedReactApp />
+
+Run the following to run the app:
+
+<RunForkedReactApp />
+
+:::info Define an existing component as an app
+To define an existing component as an app, add to its directory the necessary app plugin and entry file (use a plugin file the corresponds to the application-type you choose).
+
+For example, the [previously created component](/getting-started/composing/creating-components), [`apps/to-do`](https://bit.cloud/my-org/tasks-scope/apps/to-do), requires [this plugin file](https://bit.cloud/my-org/tasks-scope/apps/to-do/~code/react-app.react-app.ts) and [this app root file](https://bit.cloud/my-org/tasks-scope/apps/to-do/~code/to-do.app-root.tsx) to be included in its component directory, for it to be defined as a react app.
+Once these files are added, run the `bit use <app-component-id>` command, to make it loadable by your workspace.
 :::

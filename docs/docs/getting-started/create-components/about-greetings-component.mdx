@@ -1,0 +1,10 @@
+import { Tooltip } from '@teambit/community.ui.text-tooltip';
+import { BitCreate, BitCreateWithExample, BitShow, BitShowWithExample, BitCreateOutput } from './commands';
+import { nodeCompiler, nodeTester, nodeLinter } from './tooltips';
+
+This component has a [**component ID**](https://bit.dev/docs/components/structure/component-id): **`my-org.people/apps/greetings`**. This ID consists of the component's scope name and component name.
+Component IDs are used by workspaces and scopes to reference components.
+
+This components also has a [**development environment**](https://bit.dev/docs/getting-started/composing/dev-environments), or 'env'.
+An env is a also a component. It provides this component with pre-defined configuration and a set of development tools such as a <Tooltip content={nodeCompiler} language="bash">compiler</Tooltip>, a <Tooltip content={nodeTester} language="bash">tester</Tooltip>, a <Tooltip content={nodeLinter} language="bash">linter</Tooltip>, and more.
+Envs can be of different types. This component was configured (by the 'react' template) to use the [Node env](/frameworks/node/node-overview) (`teambit.harmony/node`).

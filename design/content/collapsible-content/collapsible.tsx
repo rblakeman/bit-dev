@@ -16,11 +16,13 @@ export type CollapsibleProps = {
   title: string | React.ReactNode;
   hSize?: Element;
   content: string | React.ReactNode;
+  hoverEffect?: 'bg' | 'text';
   className?: string;
   hasSeperator?: boolean;
+  isOpenByDefault?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-const ANIMATION_DURATION = 600;
+const ANIMATION_DURATION = 500;
 
 export function Collapsible({
   title,
@@ -28,9 +30,11 @@ export function Collapsible({
   content,
   className,
   hasSeperator = true,
+  hoverEffect = 'bg',
+  isOpenByDefault = false,
   ...rest
 }: CollapsibleProps) {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(isOpenByDefault);
   const isAnimating = useRef(false);
 
   const toggleHide = () => {
@@ -42,7 +46,7 @@ export function Collapsible({
       <>
         <div
           {...rest}
-          className={cx(styles.row, className)}
+          className={cx(styles.row, styles[hoverEffect], className)}
           onClick={() => (!isAnimating.current ? toggleHide() : null)}
         >
           <Icon
@@ -57,17 +61,17 @@ export function Collapsible({
           <div className={cx(styles.rightAligned, ellipsis)}>
             {typeof title === 'string' ? (
               <Heading className={styles.heading} element={hSize}>
-                {title}
+                {title as string}
               </Heading>
             ) : (
-              title
+              (title as React.ReactNode)
             )}
           </div>
           <div className={styles.wrapper}>
             <Text className={styles.scopes}> </Text>
           </div>
         </div>
-        <Text className={cx(styles.rightAligned, styles.padL15, styles.hide)}>{}</Text>
+        {/* <Text className={cx(styles.rightAligned, styles.padL15, styles.hide)}>{}</Text> */}
         {/* @ts-ignore */}
         <AnimateHeight
           duration={ANIMATION_DURATION}

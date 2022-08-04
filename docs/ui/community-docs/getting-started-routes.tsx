@@ -31,6 +31,7 @@ const VersionComponents = lazy(() => import('@teambit/docs.content.getting-start
 const CreateRemoteScope = lazy(() => import('@teambit/docs.content.getting-started.create-remote-scope'));
 const ShareComponents = lazy(() => import('@teambit/docs.content.getting-started.share-components'));
 const CreateComponents = lazy(() => import('@teambit/docs.docs.getting-started.create-components'));
+// const UseAspects = lazy(() => import('@teambit/docs.docs.getting-started.use-aspects'));
 
 // const CiInstall = lazy(() => import('@teambit/docs.content.getting-started.ci-install'));
 
@@ -107,9 +108,15 @@ export const gettingStartedDocsRoutes: DocsRoute[] = [
           'Component development is simplified and standardized using Component Development Environments (or envs in short). An env is a compositions of several Services.',
         component: <DevEnvs />,
       },
+      // {
+      //   path: 'use-aspects',
+      //   title: 'Use aspects',
+      //   description: 'Aspects are full-stack components that provide a specific service.',
+      //   component: <UseAspects />,
+      // },
       {
-        path: 'use-apps',
-        title: 'Use apps',
+        path: 'create-apps',
+        title: 'Create apps',
         description: '',
         component: <UseApps />,
       },

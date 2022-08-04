@@ -3,6 +3,7 @@ description: Displays code in the UI using a terminal mock
 ---
 
 import { Terminal } from './terminal';
+import { Neutral, Heading, Blue, Red, Green } from './terminal-elements';
 
 ## Basic usage
 
@@ -17,11 +18,7 @@ Pass the command to see it rendered as a command in the terminal. Click on the c
 When displaying output (to the terminal), the 'copy' button and '$' sign are hidden.
 
 ```ts live
-() => (
-  <Terminal isOutput>
-    4 files changed, 50 insertions(+), 41 deletions(-)
-  </Terminal>
-);
+() => <Terminal isOutput>4 files changed, 50 insertions(+), 41 deletions(-)</Terminal>;
 ```
 
 ## Custom highlighting
@@ -40,4 +37,22 @@ Use spans to customize the command with your own highlighting. Note that when us
     </Terminal>
   );
 };
+```
+
+The terminal component also provides its own set of components for highlighting:
+
+```ts live
+<Terminal isOutput>
+  <Neutral>teambit.design/ui/buttons/button</Neutral>
+  <br />
+  <Neutral bold>teambit.design/ui/buttons/button</Neutral>
+  <br />
+  <Blue>teambit.design/ui/buttons/button</Blue>
+  <br />
+  <Red>teambit.design/ui/buttons/button</Red>
+  <br />
+  <Green>teambit.design/ui/buttons/button</Green>
+  <br />
+  <Heading>modified components</Heading>
+</Terminal>
 ```

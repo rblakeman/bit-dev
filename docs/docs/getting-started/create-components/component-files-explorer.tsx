@@ -19,11 +19,11 @@ export const ExploreComponentFiles = () => (
     options={{
       contentFontSize: 13,
       fileTreeWidth: 230,
+      codeHeight: 400,
       isDirOpen: true,
-      title: 'tasks-scope/ui/todo',
+      title: 'tasks-scope/apps/to-do',
       wordWrap: 'off',
     }}
-    style={{ minHeight: 400 }}
     files={files}
     defaultFile="index.ts"
   />

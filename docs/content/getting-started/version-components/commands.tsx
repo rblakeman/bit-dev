@@ -17,13 +17,13 @@ export const StatusOutput = () => (
   </Terminal>
 );
 
-export const BitSnap = () => <CommandsExplorer commandName="snap" />;
+export const BitSnap = () => <CommandsExplorer commandName="snap" className={styles.noMarginBottom} />;
 
-export const BitTag = () => <CommandsExplorer commandName="tag" />;
+export const BitTag = () => <CommandsExplorer commandName="tag" className={styles.noMarginBottom} />;
 
 export const SnapExample = () => {
   const example = {
-    'component-name': 'apps/to-do',
+    'component-pattern': 'apps/to-do',
   };
   return <CommandsExplorer commandName="snap" commandExample={example} />;
 };
@@ -58,7 +58,7 @@ export const TagOutput = () => (
   </Terminal>
 );
 
-export const BitReset = () => <CommandsExplorer commandName="reset" />;
+export const BitReset = () => <CommandsExplorer commandName="reset" className={styles.noMarginBottom} />;
 
 export const ResetExample = () => {
   const example = {
@@ -82,4 +82,51 @@ export const CheckoutExample = () => {
     reset: true,
   };
   return <CommandsExplorer commandName="checkout" commandExample={example} />;
+};
+
+export const AutoSnapStatusOutput = () => (
+  <Terminal isOutput>
+    <span className={styles.heading}>modified components</span>
+    <br />
+    <br />
+    <span>{` > `}</span>
+    <span className={styles.component}>entities/blog-post</span>
+    <span>{` ... `}</span>
+    <span className={styles.greenHighlight}>ok</span>
+    <br />
+    <br />
+    <span className={styles.heading}>
+      components pending to be tagged automatically (when their dependencies are tagged)
+    </span>
+    <br />
+    <br />
+    <span>{` > `}</span>
+    <span className={styles.component}>my-org.blog/pages/blog-page</span>
+    <span>{` ... `}</span>
+    <span className={styles.greenHighlight}>ok</span>
+    <br />
+    <span>{` > `}</span>
+    <span className={styles.component}>my-org.blog/apps/public-blog-app</span>
+    <span>{` ... `}</span>
+    <span className={styles.greenHighlight}>ok</span>
+  </Terminal>
+);
+
+export const LogExample = () => {
+  const example = { id: 'apps/to-do' };
+  return <CommandsExplorer commandName="log" commandExample={example} />;
+};
+
+export const BitLog = () => <CommandsExplorer commandName="log" />;
+
+export const DiffExample = () => {
+  const example = { 'values...': 'apps/to-do' };
+  return <CommandsExplorer commandName="diff" commandExample={example} />;
+};
+
+export const CreateLaneExample = () => {
+  const example = {
+    'lane-name': 'new-feature',
+  };
+  return <CommandsExplorer commandName="lane" subCommandName="create" commandExample={example} />;
 };

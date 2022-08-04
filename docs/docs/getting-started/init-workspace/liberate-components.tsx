@@ -48,6 +48,7 @@ export const AfterDecoupling = () => (
     options={{
       contentFontSize: 13,
       fileTreeWidth: 350,
+      codeHeight: 305,
       isDirOpen: true,
       title: 'MY-PROJECT',
       wordWrap: 'off',
